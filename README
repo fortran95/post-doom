@@ -1,25 +1,40 @@
-某人的遗嘱系统
-==============
+遗嘱系统
+Testament System
+================
 
 在我的国家，谈论遗嘱之类话题有些不吉利。但是我们应该具有危机感，以免遇到事情时手忙脚乱。
-因此，我设计了这个系统，配合 deathswitch 等服务，在我遇到意外无法上线后发布我的重要信息。
+因此，我设计了这个系统，配合 DeathSwitch 等服务，在我遇到意外无法上线后发布我的重要信息。
+In my country, it's somehow infelicitous refering to testaments. But we must do this in advance in case of emergency.
+Therefore I did this system, cooperating with services like DeathSwitch to publish my important information when I encountered an accident.
 
 这不完全是一个程序——本Repo里也存储着我的遗嘱信息。后文将讲解本系统的原理。
+This repository contains more than a program. My testaments are stored too. It's principle is described as follows.
 
 法律效力
---------
+Law Validity
+------------
 本 Repository 的贡献人只有我。而我必须通过密码和本地系统上的 RSA 私钥进行身份认证后才能提交内容。因此，本 Repository 中的信息只能是我的。
 本地的 RSA 私钥是被加密的，每次提交更改之前我都必须输入密码。因为密码只有我知道，所以这个私钥是我的。
 有人可能提出这样的疑问：我不能把密码交给别人，使得他们篡改我的内容吗？显然，这种可能在技术上是有的，但是我没有任何理由不保护我的密码。因为这是涉及到我的切身利益的问题——他们完全可以将我的财产分配给他们。此外，这个问题和如下一个问题具有相同的性质：比如我将我的印章交给别人，或者事先在空白的纸张上签字再让别人代笔。
+I am the only contributor to this repository, and I must use a passphrase and a RSA private key to authenticate myself before publishing any updates. Therefore, anything appears in this repository belongs to me.
+Local RSA private key is saved under encryption, and each time I push I have to enter the passphrase. The passphrase is known only to me, so the private key belongs to me.
+Some one may question that I may give out my passphrase letting others change my contents. This is possible but I have no reason to do this. Testaments concern my treasure. This is the same question as I give out my seal, or do signature on blank paper before anyone writes anything.
 
 本系统的详细说明
+Details
 ----------------
 因为遗嘱是特殊的，要公开的内容在我还健康的时候是不能公开的，所以，即使是在线存储，我也会加密平时公开的信息。
 在我死后，即需要完全将这些信息公之于众的时候，一系列密码——对应着在线存储的这些加密文件的解密密码——将会被公开。这时，下载并打开这些文件即可。
+Testaments are special as they should not be public when I am alive. So although files are here I shall encrypted them.
+After my death they should be public. To do this, a series of passphrases for decrypting these files will be published.
 
 考虑到 git 系统是存储日志的，即使我在某个时候决定需要撤回发布的某条信息，我也不能办到，所以我只能在这条信息发布之前设定一个密码予以加密。为了撤回文件，对应的密码日后不再公开即可。因为这样将导致每份文件都有一个密码，我需要写一个程序负责管理这些密码。然而这些密码的存储并不放在 git 的管理之下。用于进行以上操作，即管理密码、负责加密和解密文件的程序，是在 git 管理之中的。
+The git system maintains a log, making me unable to withdraw files written to github.com. So I must encrypt the file before post it. If one day I need to withdraw one of them, I will just delete the stored passphrase for given file rendering the latter being unable to decrypt. This approach results in a lot of passphrases to maintain, and I will do a program to help me. These passphrases are not stored in git. Only the management program stored.
 
 根据设计，已经公开的加密文件在解密时可能需要提供不止一个控制密码。还需要一系列身份认证问题，以确定您是作者预期的读者类型（朋友、亲戚、网友、群众……）。
+And by design, decrypting published files may need not only a control passphrase but also a series of questions. This ensures you are the intended type of audience(friends, relatives, netfriends, general public...) of given file.
 
-本系统在 Debian 6.0 下编写。依赖于：
-    * Python(>=2.6.6)
+依赖关系
+Dependencies
+------------
+Python(>=2.6.6)

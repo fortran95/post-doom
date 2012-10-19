@@ -73,5 +73,5 @@ if __name__ == '__main__':
         for each in q:
             ret[each] = raw_input(each.encode('utf-8'))
         return ret
-
+    print docf
     print EncryptedFile().read(docf,askkey,askqa)
