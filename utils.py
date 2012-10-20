@@ -5,6 +5,12 @@ import random
 
 from hashes import Hash
 
+def getUTF8(s):
+    if type(s) == unicode:
+        return s.encode('utf-8')
+    else:
+        return s
+
 def randkey(length=128):
     ret = ''
     for i in range(0,length):

@@ -70,7 +70,6 @@ while True:
             selected_key = keys_index[num]
             if command == 'cat':
                 readpath = os.path.join(epath,selected_key)
-                print readpath
                 if os.path.isfile(readpath):
                     content = open(os.path.join(epath,selected_key),'r').read()
                     _viewer.handle(keys_list[selected_key],content)

@@ -4,7 +4,7 @@ import json
 
 from xipher import xipher as x
 from hashes import Hash
-from utils import formatTitle
+from utils import *
 
 class EncryptedFile:
     def __init__(self,src=None):        
@@ -74,7 +74,7 @@ class EncryptedFile:
         return Hash('sha224',s).hmac(key,False)
 
     def _calculate_key(self,key,qa):
-        answers = ['%s:%s' % (str(k).strip(),str(qa[k]).strip()) for k in qa.keys()]
+        answers = ['%s:%s' % (str(getUTF8(k)).strip(),str(getUTF8(qa[k])).strip()) for k in qa.keys()]
         answers.sort()
         joint_ans = ';'.join([each.lower() for each in answers])
         return Hash('whirlpool',joint_ans).hmac(key,True) + Hash('sha512',joint_ans).hmac(key,True)
