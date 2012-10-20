@@ -1,8 +1,15 @@
 # -*- coding: utf-8 -*-
 import getpass
 import os
+import random
 
 from hashes import Hash
+
+def randkey(length=128):
+    ret = ''
+    for i in range(0,length):
+        ret += chr(random.randint(0,255))
+    return ret
 
 def formatTitle(title):
     # Title is combined with letters, numbers, _, with no others.

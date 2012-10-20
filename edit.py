@@ -18,15 +18,17 @@ def listkeys(dpath,gkey):
             fkey = x(gkey).decrypt(open(fpath,'r').read())
         except:
             continue
-        ret[l] = fkey
+        ret[each] = fkey
     return ret
 def _exit():
     clearScreen()
     print '结束 / Exit now'
     exit()
 
-dpath = os.path.join(os.path.realpath(os.path.dirname(sys.argv[0])),'..','secret')
+basepath = os.path.realpath(os.path.dirname(sys.argv[0]))
+dpath = os.path.join(basepath,'..','secret')
 dpath = os.path.realpath(dpath)
+epath = os.path.join(basepath,'encrypted')
 
 GLOBALPASS = getGlobalPass()
 if not GLOBALPASS:
@@ -67,4 +69,4 @@ while True:
             print keys_index[num]
             raw_input('press any key to continue')
     if command == 'add':
-        _add.handler(GLOBALPASS,dpath)
+        _add.handler(GLOBALPASS,dpath,epath)

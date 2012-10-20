@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 import docformat
 from utils import *
+from xipher import xipher as x
+from hashes import Hash
 from gui.editor import editor as e
 
-def handler(gpass,dpath):
+def handler(gkey,dpath,epath):
     title, content, qas = '','',{}
     while True:
         s = e(title,content,qas)
@@ -37,4 +39,13 @@ def handler(gpass,dpath):
             return
 
     # Save
-    raw_input('Saved')
+    savekey = randkey(128)
+    
+    open(os.path.join(dpath,title),'w+').write(x(gkey).encrypt(savekey))
+
+    doc = docformat.EncryptedFile()
+    plaintext = doc.generate(savekey,qas,title,content)
+
+    open(os.path.join(epath,title),'w+').write(x(savekey).encrypt(plaintext))
+
+    raw_input('保存完毕，按任意键返回')
