@@ -13,13 +13,13 @@ class editor:
     def _okcommand(self):
         qas = {}
         for qbox,abox in self.qalist:
-            q = qbox.get().strip()
-            a = abox.get().strip()
+            q = qbox.get().strip().encode('utf-8')
+            a = abox.get().strip().encode('utf-8')
             if q and a:
                 qas[q] = a
         self.result = {
-            'title': self.titleBox.get().strip(),
-            'content': self.contentBox.get(1.0,END).strip(),
+            'title': self.titleBox.get().strip().encode('utf-8'),
+            'content': self.contentBox.get(1.0,END).strip().encode('utf-8'),
             'qas': qas
         }
         self.root.destroy()

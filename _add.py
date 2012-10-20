@@ -24,7 +24,7 @@ def handler(gpass,dpath):
             print '问答'
             for q in qas:
                 print " * [%s] %s" % (q,qas[q])
-            print '内容\n%s' % content.encode('utf-8')
+            print '内容\n%s' % content
             print '--------'
             cmd = raw_input('<Enter>:重新修改 s+<Enter>:保存 其他:取消').strip().lower()
             if cmd == 's':
