@@ -7,6 +7,7 @@ import time
 from hashes import Hash
 from xipher import xipher as x
 from utils import *
+import _add
 
 def listkeys(dpath,gkey):
     l = os.listdir(dpath)
@@ -66,5 +67,4 @@ while True:
             print keys_index[num]
             raw_input('press any key to continue')
     if command == 'add':
-        print 'add'
-        raw_input('press any key to continue')
+        _add.handler(GLOBALPASS,dpath)
