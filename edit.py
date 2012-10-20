@@ -75,5 +75,12 @@ while True:
                     _viewer.handle(keys_list[selected_key],content)
                 else:
                     raw_input('文件不存在 / Cannot find this file')
+            if command == 'del':
+                if raw_input('请确认删除：\n%s\n输入[YES]确认' % selected_key) == 'YES':
+                    try:
+                        os.remove(os.path.join(epath,selected_key))
+                        os.remove(os.path.join(dpath,selected_key))
+                    except:
+                        pass
     if command == 'add':
         _add.handler(GLOBALPASS,dpath,epath)
