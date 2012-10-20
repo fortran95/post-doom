@@ -12,8 +12,8 @@ class editor:
 
     def _okcommand(self):
         self.result = {
-            'title': self.titleBox.get(),
-            'content': self.contentBox.get(1.0,END),
+            'title': self.titleBox.get().strip(),
+            'content': self.contentBox.get(1.0,END).strip(),
         }
         self.root.destroy()
         self.root.quit()
