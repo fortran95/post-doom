@@ -10,6 +10,38 @@ Therefore I did this system, cooperating with services like DeathSwitch to publi
 这不完全是一个程序——本Repo里也存储着我的遗嘱信息。后文将讲解本系统的原理。
 This repository contains more than a program. My testaments are stored too. It's principle is described as follows.
 
+如果您需要阅读遗嘱
+------------------
+如果遗嘱已经满足公布条件，您应该收到一个压缩文件包，里面包含了一系列的短小的文件。
+强烈建议您首先了解 Linux 如何使用。
+请准备一台计算机，安装了 Debian 6.0 操作系统，并且请确认下列软件已经安装：
+    * Python
+        启动终端，输入命令:
+        > python --version
+        您应当看到类似这样的输出，最后数字是版本号，类似2.x.x，但是大于2.6.6。
+        > Python 2.6.6
+    * Tkinter
+        启动终端，输入命令：
+        > python
+        > >>>import Tkinter
+        如果 *没有* 出现这样的字样：ImportError: No module named Tkinter，那么就是已经安装了。
+        现在按 Ctrl+C 退出 Python。
+    * git
+        在终端中输入：
+        > git --version
+        结果类似这样：
+        > git version 1.7.2.5
+如果以上软件没有安装，请您咨询有经验的Linux用户安装。
+下一步，建立文件目录。我们假设您当前的目录为 ~/，就使用如下命令：
+    > mkdir -p workspace/secret
+    > cd workspace
+现在您的工作目录是 ~/workspace 了。现在请下载互联网上的程序，使用命令：
+    > git clone https://github.com/fortran95/post-doom.git
+在运行之前，请将您的压缩包中的全部文件解压，复制到 ~/workspace/secret 中。
+于是进入 ~/workspace/post-doom目录，运行命令：
+    > python edit.py
+您将被要求输入一个密码。这个密码应该和压缩文件一起给您了。如果正确，将会列出所有可能阅览的文件。根据提示操作即可。
+
 法律效力
 Law Validity
 ------------
