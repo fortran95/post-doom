@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+import getpass
+import os
+
+from hashes import Hash
+
 def formatTitle(title):
     # Title is combined with letters, numbers, _, with no others.
     title = title.strip()
@@ -11,3 +17,14 @@ def formatTitle(title):
         else:
             ret += '_'
     return ret
+
+def getGlobalPass():
+    r = getpass.getpass(u'请输入全局保护密码，以便解密文件解锁密码\nType in global protection passphrase to decrypt file decrypting passphrases.\n'.encode('utf-8'))
+    r = r.strip()
+    if r:
+        return Hash('whirlpool',r).digest() + Hash('sha512',r).digest()
+    else:
+        return False
+
+def clearScreen():
+    os.system('clear')
