@@ -8,6 +8,7 @@ from hashes import Hash
 from xipher import xipher as x
 from utils import *
 import _add
+import _viewer
 
 def listkeys(dpath,gkey):
     l = os.listdir(dpath)
@@ -60,13 +61,20 @@ while True:
     if command in ('del','cat'):
         try:
             num = int(raw_input('请输入文件编号'))
-            if num < 1 or num >= len(keys_index):
+            if num < 1 or num > len(keys_index):
                 raise Exception
         except:
             num = False
         if num:
             num -= 1
-            print keys_index[num]
-            raw_input('press any key to continue')
+            selected_key = keys_index[num]
+            if command == 'cat':
+                readpath = os.path.join(epath,selected_key)
+                print readpath
+                if os.path.isfile(readpath):
+                    content = open(os.path.join(epath,selected_key),'r').read()
+                    _viewer.handle(keys_list[selected_key],content)
+                else:
+                    raw_input('文件不存在 / Cannot find this file')
     if command == 'add':
         _add.handler(GLOBALPASS,dpath,epath)

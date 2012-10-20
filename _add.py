@@ -46,6 +46,6 @@ def handler(gkey,dpath,epath):
     doc = docformat.EncryptedFile()
     plaintext = doc.generate(savekey,qas,title,content)
 
-    open(os.path.join(epath,title),'w+').write(x(savekey).encrypt(plaintext))
+    open(os.path.join(epath,title),'w+').write(plaintext)
 
     raw_input('保存完毕，按任意键返回')
