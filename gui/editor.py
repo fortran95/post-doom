@@ -8,6 +8,15 @@ class editor:
         self.questions = str(questions)
 
         self._createWidgets()
+        self.result = None
+
+    def _okcommand(self):
+        self.result = {
+            'title': self.titleBox.get(),
+            'content': self.contentBox.get(1.0,END),
+        }
+        self.root.destroy()
+        self.root.quit()
 
     def _createWidgets(self):
         self.root = Tk()
@@ -23,6 +32,7 @@ class editor:
             self.contentBox.insert(END,self.content)
 
         self.btnOK = Button(text='确认')
+        self.btnOK['command'] = self._okcommand
 
         self.titleBox.grid(row=0,column=0,sticky=N+E+W+S)
         self.contentBox.grid(row=1,column=0)
@@ -33,4 +43,5 @@ class editor:
 
 if __name__ == '__main__':
     e = editor('default','default')
-    print e.showDialog()
+    e.showDialog()
+    print e.result
