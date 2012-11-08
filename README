@@ -37,7 +37,13 @@ This repository contains more than a program. My testaments are stored too. It's
     > cd workspace
 现在您的工作目录是 ~/workspace 了。现在请下载互联网上的程序，使用命令：
     > git clone https://github.com/fortran95/post-doom.git
-在运行之前，请将您的压缩包中的全部文件解压，复制到 ~/workspace/secret 中。
+在运行之前，请将您的压缩包中的全部文件解压，复制到 ~/workspace/secret 中。现在您的目录应该类似这样：
+    ~/workspace/
+        secret/
+            （这里面放置了您刚刚获得的压缩包信息）
+        post-doom/
+            （各种文件，程序）
+            edit.py
 于是进入 ~/workspace/post-doom目录，运行命令：
     > python edit.py
 您将被要求输入一个密码。这个密码应该和压缩文件一起给您了。如果正确，将会列出所有可能阅览的文件。根据提示操作即可。
